@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wght@8..144,500&display=swap");
+@font-face {
+    font-family: "Fino";
+    src:
+        url(../Fino\ Sans\ Regular.otf) format("woff2");
+    font-weight: 300;
+    font-style: oblique;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: 0.2s ease-out;
+}
+body {
+    background-color: #eee;
+    color: #111;
+}
+h1, h2 {
+    font-family: 'Fino', serif;
+}
+@keyframes h1_bg {
+    from {
+        background-position: left;
+    }
+    to {
+        background-position: right;
+    }
+}
+
+/*! --------------------------------------------------------------------------------------- */
+/*! --------------------------------------------------------------------------------------- */
+/*! --------------------------------------------------------------------------------------- */
+/* MAIN tag  for logged-in-menu */
+main#logged-in-menu {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 10px;
+    background-color: #eee;
+}
+main#logged-in-menu > div {
+    position: relative;
+}
+main#logged-in-menu > div:first-child {
+    border-radius: 0 10px 10px 0;
+}
+main#logged-in-menu > div:last-child {
+    padding: 10px;
+}
+
+/*! --------------------------------------------------------------------------------------- */
+/*! --------------------------------------------------------------------------------------- */
+/*! --------------------------------------------------------------------------------------- */
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: #333;
+    padding: 5px;
+}
+::-webkit-scrollbar-thumb {
+    width: 10px;
+    background-color: gray;
+    border-radius: 20px;
+    border: 3px solid #333;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: greenyellow;
+}
+::-webkit-scrollbar-button {
+    width: 10px;
+    height: 10px;
+}
+
+/*! --------------------------------------------------------------------------------------- */
+/*! --------------------------------------------------------------------------------------- */
+/*! --------------------------------------------------------------------------------------- */
+/*! --------------------------------------------------------------------------------------- */
+
+.logged-out-navbar {
+    overflow: hidden;
+    background-color: #333;
+}
+.logged-out-navbar a {
+    text-decoration: none;
+    padding: 10px 20px;
+    color: snow;
+    float: right;
+}
+.logged-out-navbar a:hover {
+    background-color: green;
+}
+
+
+#current-language {
+    position: absolute;
+    bottom: 30px;
+    left: 5px;
+    font-size: 2em;
+    cursor: pointer;
+} 

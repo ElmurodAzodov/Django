@@ -1,0 +1,85 @@
+{% load static %}
+{% load django_bootstrap5 %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon" />
+
+    {% block title %}
+      <title>AC Django Project</title>
+    {% endblock %}
+
+    {% bootstrap_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'fontawesome/css/all.min.css' %}" />
+
+    {% block link %}
+
+    {% endblock %}
+
+    {% block style %}
+
+    {% endblock %}
+  </head>
+  <body>
+
+
+    {% if user.is_authenticated %}
+      <main id="logged-in-menu">
+        <div>
+          {% include 'navbar.html' %}
+          <a id="wishlist" href="{% url 'wishlist_view' %}" 
+            data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
+            🧺
+          </a>
+        </div>
+        <div>
+          <div id="messages">
+            {% bootstrap_messages %}
+          </div>
+
+          {% block content %}
+
+          {% endblock %}
+
+          {% block script %}
+
+          {% endblock %}
+        </div>
+      </main>
+    {% else %}
+      <div class="logged-out-navbar">
+        <a style="float: left;" href="{% url 'home_page' %}">🏠</a>
+        
+        <a href="/accounts/signup">Registration</a>
+        <a href="/users/login">Login</a>
+      </div>
+      <main id="logged-out-menu">
+        {% bootstrap_messages %}
+        {% block auth_content %}
+          <h1>Authenticate</h1>
+          <hr />
+        {% endblock %}
+      </main>
+    {% endif %}
+
+    {% bootstrap_javascript %}
+    <script>
+      setTimeout(() => {
+        const messages = document.querySelectorAll('#messages')
+        messages.forEach((msg) => {
+          msg.remove()
+        })
+      }, 5000)
+      
+      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+      })
+    </script>
+  </body>
+</html>
